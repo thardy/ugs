@@ -1,4 +1,4 @@
-import {Objective} from '../objectives/objective.model';
+import {Requirement} from './event.model';
 import {Chapter} from './chapter.model';
 
 export class Story {
