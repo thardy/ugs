@@ -7,7 +7,7 @@ export class Trigger {
   //    when defeatEnemy 79, then display Page 133
   //    when selectChoice 12, then giveItem 95
   id: number;
-  requirements: Event[];  // when these things happen
+  requirements: Event[];  // when these things happen - how do multiple Events work?  I think triggers should be single Events
   // things I want to be able to do
   //  displayPage (cyoa and decision tree), arriveAtLocation, changeStat, giveItem, takeItem, killEnemy, etc
   results: Event[];       // do these things
