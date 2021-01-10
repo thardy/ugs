@@ -1,11 +1,10 @@
-// I'm thinking these are things that can be requirements, like chapter requirements, quest objectives, etc, OR things that can happen to the
-//  characters.  Things the characters can DO, and things that can be DONE TO THEM.
+// Things that HAVE HAPPENED
 export class Event {
   // has the following logical structure
-  //  <action> <actionContextAmount> <actionContextId>
+  //  <action> <contextAmount> <contextId>
   //  action - what we are doing with the thing
-  //  actionContextAmount - how many of the thing we are talking about
-  //  actionContextId - the thing being acted upon or with
+  //  contextAmount - how many of the thing we are talking about
+  //  contextId - the thing being acted upon or with
   //  e.g. addItem 100 gold
   id: number;
   action: string;   // e.g. *selectChoice* 'save the slaves', *defeatEnemy* 10 rabbits, *giveItem* 15 weapons, *giveItem* particular item, *arriveAtLocation* Haven

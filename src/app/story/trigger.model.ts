@@ -1,24 +1,22 @@
 import {Event} from './event.model';
+import {Action} from 'rxjs/internal/scheduler/Action';
 
 export class Trigger {
-  // The idea behind this model is, 'when this/these things happen', 'do this/these things'
-  //  e.g.
-  //    when selectChoice 34, then displayPage 41
-  //    when defeatEnemy 79, then display Page 133
-  //    when selectChoice 12, then giveItem 95
+  // Any actions that need to happen as soon as state matches requirements
+  //   * at least one Requirement needs to be based on an Event to provide the async portion of the Trigger
   id: number;
-  requirements: Event[];  // when these things happen - how do multiple Events work?  I think triggers should be single Events
+  requirements: Requirement[];  // when any Event-based Requirement occurs, we check all the Requirements for a match
   // things I want to be able to do
   //  displayPage (cyoa and decision tree), arriveAtLocation, changeStat, giveItem, takeItem, killEnemy, etc
-  results: Event[];       // do these things
+  actions: Action[];       // execute these Actions when the Requirements list matches state
 
   constructor(options: {
     id?: number,
-    requirements?: Event[],
-    results?: Event[],
+    requirements?: Requirement[],
+    actions?: Action[],
   } = {}) {
     this.id = options.id;
     this.requirements = options.requirements;
-    this.results = options.results;
+    this.actions = options.actions;
   }
 }
