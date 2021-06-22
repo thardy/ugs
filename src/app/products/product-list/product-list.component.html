@@ -1,0 +1,37 @@
+<h1>Product List</h1>
+
+<div class="row">
+  <div class="column">
+    <ul>
+      <li *ngFor="let product of products$ | async">
+        <a [routerLink]="['/products', product.id]">{{product.name}}</a><br/>
+        {{product.description}}<br/>
+        {{product.price}}
+        <button (click)="onEdit(product)">Edit</button>
+        <button (click)="onDelete(product)">Delete</button>
+      </li>
+    </ul>
+
+    <button (click)="onAdd()">Add</button>
+
+    <ugs-product-edit *ngIf="editing" [product]="selectedProduct" [mode]="'update'" (formClosed)="onFormClosed()"></ugs-product-edit>
+
+    <ugs-product-edit *ngIf="adding" [mode]="'create'" (formClosed)="onFormClosed()"></ugs-product-edit>
+  </div>
+
+  <div class="column">
+    <ul>
+      <li>
+        Current TestCount: {{testCount$ | async}}
+      </li>
+      <li>
+        Increment TestCount
+        <button (click)="onTestButton1()">Plus</button>
+      </li>
+      <li>
+        Decrement TestCount
+        <button (click)="onTestButton2()">Minus</button>
+      </li>
+    </ul>
+  </div>
+</div>
