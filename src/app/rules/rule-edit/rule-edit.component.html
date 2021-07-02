@@ -1,0 +1,21 @@
+<h2>Rule Form</h2>
+
+<ng-container [formGroup]="form">
+  <input placeholder="Name" formControlName="name">
+  <textarea matInput placeholder="Description" formControlName="description"></textarea>
+  <input placeholder="Priority" formControlName="priority"><br/>
+  Action Dependencies:<br/>
+  <ace style="height: 200px;" [config]="config" [(value)]="actionDependencyJsonString"></ace><br/>
+  Conditions:<br/>
+  <ace style="height: 200px;" [config]="config" [(value)]="conditionsJsonString"></ace><br/>
+  Output Actions:<br/>
+  <ace style="height: 200px;" [config]="config" [(value)]="outputActionsJsonString"></ace><br/>
+</ng-container>
+
+<button (click)="onCancel()">
+  Cancel
+</button>
+
+<button (click)="onSave()">
+  Save
+</button>

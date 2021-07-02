@@ -6,6 +6,7 @@ import {select, Store} from '@ngrx/store';
 import {testCount} from '../store/product.selectors';
 import {AppState} from '../../store/reducers';
 import {ProductActions} from '../store/product.actions-typed';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'ugs-product-list',
@@ -31,7 +32,14 @@ export class ProductListComponent implements OnInit {
       );
 
     this.loading$ = this.store
-      .pipe(select(isLoading))
+      .pipe(
+        select(isLoading),
+        tap((isLoading) => {
+          console.log(`products loading changed to ${isLoading}`)
+        })
+      );
+    this.loading$.subscribe();
+
 
     this.testCount$ = this.store.pipe(select(testCount));
   }

@@ -33,9 +33,8 @@ export class ProductEffects {
       .pipe(
         ofType(ProductActions.existingProductSaved),
         switchMap(action => this.productService.updateProduct(action.update.id, action.update.changes)),
-        //map((product) => ProductActions.productUpdated({product: product}))
+        map((product) => ProductActions.productUpdated({product: product}))
       ),
-    {dispatch: false} // don't dispatch a new action
   );
 
   deleteProduct$ = createEffect(
@@ -45,7 +44,7 @@ export class ProductEffects {
         switchMap(action => {
           return this.productService.deleteProduct(action.product);
         }),
-        //map((product) => ProductActions.productDeleted({product: product}))
+        //map((rule) => ProductActions.productDeleted({rule: rule}))
       ),
     {dispatch: false} // don't dispatch a new action
   );
@@ -59,7 +58,7 @@ export class ProductEffects {
           console.log(`effect working for incrementTestCount`)
           return observableOf(null)
         }),
-        //map((product) => ProductActions.productUpdated({product: product}))
+        //map((rule) => ProductActions.productUpdated({rule: rule}))
       ),
     {dispatch: false} // don't dispatch a new action
   );
@@ -73,7 +72,7 @@ export class ProductEffects {
           console.log(`effect working for decrementTestCount`)
           return observableOf(null)
         }),
-        //map((product) => ProductActions.productUpdated({product: product}))
+        //map((rule) => ProductActions.productUpdated({rule: rule}))
       ),
     {dispatch: false} // don't dispatch a new action
   );

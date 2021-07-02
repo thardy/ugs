@@ -11,11 +11,18 @@ import {RouterState, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 
+import {RulesModule} from './rules/rules.module';
 import {metaReducers, reducers} from './store/reducers';
+import {ACE_CONFIG, AceConfigInterface, AceModule} from 'ngx-ace-wrapper';
+import { EditorTestComponent } from './editor-test/editor-test.component';
+
+const DEFAULT_ACE_CONFIG: AceConfigInterface = {
+};
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditorTestComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +43,15 @@ import {metaReducers, reducers} from './store/reducers';
       stateKey: 'router',
       routerState: RouterState.Minimal
     }),
+    RulesModule,
+    AceModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ACE_CONFIG,
+      useValue: DEFAULT_ACE_CONFIG
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

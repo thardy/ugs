@@ -15,7 +15,7 @@ export interface ProductState extends EntityState<IProduct> {
 
 export const adapter = createEntityAdapter<IProduct>({
   sortComparer: compareProducts,
-  // selectId: product => product.productId // this is where you would override id if it is not 'id'
+  // selectId: rule => rule.productId // this is where you would override id if it is not 'id'
 });
 
 export const initialState: ProductState = adapter.getInitialState({

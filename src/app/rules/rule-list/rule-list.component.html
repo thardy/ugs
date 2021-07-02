@@ -1,0 +1,46 @@
+<h1>Rule List</h1>
+
+<div class="row">
+  <div class="column">
+    <ul>
+      <li *ngFor="let rule of rules$ | async">
+        <a [routerLink]="['/rules', rule.id]">{{rule.name}}</a><br/>
+        {{rule.description}}<br/>
+        <button (click)="onEdit(rule)">Edit</button>
+        <button (click)="onDelete(rule)">Delete</button>
+      </li>
+    </ul>
+
+    <button (click)="onAdd()">Add</button>
+
+    <ugs-rule-edit *ngIf="editing" [rule]="selectedRule" [mode]="'update'" (formClosed)="onFormClosed()"></ugs-rule-edit>
+
+    <ugs-rule-edit *ngIf="adding" [mode]="'create'" (formClosed)="onFormClosed()"></ugs-rule-edit>
+  </div>
+
+  <div class="column">
+    <ul>
+      <li>
+        Give Item
+        <input placeholder="Item Id" #giveItem> <input placeholder="Destination" #giveItemDestination>
+        <button (click)="onDispatchAction({name: 'giveItem', contextId: giveItem.value, destination: giveItemDestination.value})">Dispatch</button>
+      </li>
+      <li>
+        Enemy Defeated
+        <input placeholder="Enemy Id" #enemyDefeated>
+        <button (click)="onDispatchAction({name: 'enemyDefeated', contextId: enemyDefeated.value})">Dispatch</button>
+      </li>
+      <li>
+        Complete Quest
+        <input placeholder="Quest Id" #completeQuest>
+        <button (click)="onDispatchAction({name: 'completeQuest', contextId: completeQuest.value})">Dispatch</button>
+      </li>
+      <li>
+        Alliance Made
+        <input placeholder="Group Id" #allianceMade>
+        <button (click)="onDispatchAction({name: 'allianceMade', contextId: allianceMade.value})">Dispatch</button>
+      </li>
+    </ul>
+  </div>
+</div>
+

@@ -1,6 +1,7 @@
 import {ActionReducer, ActionReducerMap, MetaReducer} from '@ngrx/store';
 import {environment} from '../../environments/environment';
 import {routerReducer} from '@ngrx/router-store';
+import {Quest} from '../game/quest.model';
 
 export interface AppState {
 
