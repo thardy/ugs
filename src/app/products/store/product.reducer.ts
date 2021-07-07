@@ -24,7 +24,7 @@ export const initialState: ProductState = adapter.getInitialState({
   testCount: 0,
 });
 
-export const reducers = createReducer(
+export const reducer = createReducer(
   initialState,
 
   on(ProductActions.loadProducts,

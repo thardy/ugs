@@ -1,6 +1,6 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {RuleState, rulesFeatureKey} from './rule.reducers';
-import * as fromRules from './rule.reducers';
+import {RuleState, rulesFeatureKey} from './rule.reducer';
+import * as fromRules from './rule.reducer';
 
 export const selectRuleState = createFeatureSelector<RuleState>(rulesFeatureKey);
 

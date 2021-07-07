@@ -40,6 +40,11 @@
         <input placeholder="Group Id" #allianceMade>
         <button (click)="onDispatchAction({name: 'allianceMade', contextId: allianceMade.value})">Dispatch</button>
       </li>
+      <li>
+        Test Action
+        <input placeholder="ContextId" #testAction>
+        <button (click)="onDispatchAction({name: 'testAction', contextId: testAction.value})">Dispatch</button>
+      </li>
     </ul>
   </div>
 </div>

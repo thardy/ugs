@@ -6,7 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 
-import * as fromRules from './store/rule.reducers';
+import * as fromRules from './store/rule.reducer';
 import {RuleEffects} from './store/rule.effects';
 
 // import {RulesRoutingModule} from './rules-routing.module';
@@ -28,7 +28,7 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
     RouterModule,
     ReactiveFormsModule,
     // RulesRoutingModule, // currently using eager-loading, so routes are in app-routing.module.ts
-    StoreModule.forFeature(fromRules.rulesFeatureKey, fromRules.reducers, { metaReducers: fromRules.metaReducers }),
+    StoreModule.forFeature(fromRules.rulesFeatureKey, fromRules.reducer, { metaReducers: fromRules.metaReducers }),
     EffectsModule.forFeature([RuleEffects]),
     AceModule,
   ],

@@ -14,7 +14,9 @@ import {environment} from '../environments/environment';
 import {RulesModule} from './rules/rules.module';
 import {metaReducers, reducers} from './store/reducers';
 import {ACE_CONFIG, AceConfigInterface, AceModule} from 'ngx-ace-wrapper';
-import { EditorTestComponent } from './editor-test/editor-test.component';
+import {EditorTestComponent} from './editor-test/editor-test.component';
+import {GameModule} from './game/game.module';
+import {FormsModule} from './forms/forms.module';
 
 const DEFAULT_ACE_CONFIG: AceConfigInterface = {
 };
@@ -43,8 +45,10 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
       stateKey: 'router',
       routerState: RouterState.Minimal
     }),
-    RulesModule,
     AceModule,
+    RulesModule,
+    GameModule,
+    FormsModule,
   ],
   providers: [
     {

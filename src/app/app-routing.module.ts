@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {productsFeatureKey} from './products/store/product.reducers';
-import {rulesFeatureKey} from './rules/store/rule.reducers';
+import {productsFeatureKey} from './products/store/product.reducer';
+import {rulesFeatureKey} from './rules/store/rule.reducer';
 import {RuleListComponent} from './rules/rule-list/rule-list.component';
 import {EditorTestComponent} from './editor-test/editor-test.component';
 

@@ -12,7 +12,7 @@ export const reducers: ActionReducerMap<AppState> = {
 }
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
-//export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [logger] : [];
+//export const metaReducer: MetaReducer<AppState>[] = !environment.production ? [logger] : [];
 
 export function logger(reducer: ActionReducer<any>): ActionReducer<any> {
   return (state, action) => {

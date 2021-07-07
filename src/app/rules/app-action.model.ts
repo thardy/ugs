@@ -14,8 +14,8 @@ export class AppAction {
   // has the following logical structure
   //  <action> <contextAmount> <contextId>
   //  name - what we are doing with the thing
-  //  contextAmount - how many of the thing we are talking about
   //  contextId - the thing being acted upon or with
+  //  contextAmount - how many of the thing we are talking about
   //  source - the source/giver of the action
   //  destination - the destination/receiver of the action
   //  e.g. giveItem 100 gold from player1 to npc32

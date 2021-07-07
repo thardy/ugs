@@ -7,6 +7,7 @@ import {IRule} from '../rule.model';
 import {RuleActions} from '../store/rule.actions-typed';
 import {filter, finalize, first, tap} from 'rxjs/operators';
 import {AppAction} from '../app-action.model';
+import {GameActions} from '../../game/store/game.actions-typed';
 
 @Component({
   selector: 'ugs-rule-list',
@@ -92,17 +93,21 @@ export class RuleListComponent implements OnInit {
 
     switch(appAction.name) {
       case 'giveItem':
-        this.store.dispatch(RuleActions.giveItem({appAction: {...appAction}}));
+        this.store.dispatch(GameActions.giveItem({appAction: {...appAction}}));
         break;
       case 'enemyDefeated':
-        this.store.dispatch(RuleActions.enemyDefeated({appAction: {...appAction}}));
+        this.store.dispatch(GameActions.enemyDefeated({appAction: {...appAction}}));
         break;
       case 'completeQuest':
-        this.store.dispatch(RuleActions.completeQuest({appAction: {...appAction}}));
+        this.store.dispatch(GameActions.completeQuest({appAction: {...appAction}}));
         break;
       case 'allianceMade':
-        this.store.dispatch(RuleActions.allianceMade({appAction: {...appAction}}));
+        this.store.dispatch(GameActions.allianceMade({appAction: {...appAction}}));
         break;
+      case 'testAction':
+        this.store.dispatch(GameActions.incrementQuestCounter({appAction: {...appAction}}));
+        break;
+
     }
 
   }

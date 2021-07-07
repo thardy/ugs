@@ -12,12 +12,4 @@ export const ruleUpdated = createAction('[existingRuleSaved Effect] Rule Updated
 export const deleteRule = createAction('[Rules List] Delete Rule', props<{rule: IRule}>());
 export const ruleDeleted = createAction('[deleteRule Effect] Rule Deleted', props<{rule: IRule}>());
 
-// test actions - for testing lots of random rule scenarios
-export const giveItem = createAction('Give Item', props<{appAction: IAppAction}>());
-export const enemyDefeated = createAction('Enemy Defeated', props<{appAction: IAppAction}>());
-export const allianceMade = createAction('Alliance Made', props<{appAction: IAppAction}>());
-export const completeQuest = createAction('Complete Quest', props<{appAction: IAppAction}>());
 
-// supporting test actions
-export const incrementQuestCounter = createAction('Increment Quest Counter', props<{appAction: IAppAction}>());
-export const incrementEpicQuestCounter = createAction('Increment Epic Quest Counter', props<{appAction: IAppAction}>());

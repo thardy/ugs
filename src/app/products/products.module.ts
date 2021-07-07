@@ -5,7 +5,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 
-import * as fromProducts from './store/product.reducers';
+import * as fromProducts from './store/product.reducer';
 import {ProductEffects} from './store/product.effects';
 import {ProductResolver} from './store/product.resolver';
 
@@ -27,7 +27,7 @@ import { TestComponent } from './test/test.component';
     CommonModule,
     ReactiveFormsModule,
     ProductsRoutingModule,
-    StoreModule.forFeature(fromProducts.productsFeatureKey, fromProducts.reducers, { metaReducers: fromProducts.metaReducers }),
+    StoreModule.forFeature(fromProducts.productsFeatureKey, fromProducts.reducer, { metaReducers: fromProducts.metaReducers }),
     EffectsModule.forFeature([ProductEffects]),
   ],
   providers: [

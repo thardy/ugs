@@ -5,12 +5,10 @@ import {environment} from '../../../environments/environment';
 import {createEntityAdapter, EntityState} from '@ngrx/entity';
 import {AppState} from '../../store/reducers';
 import {compareRules, IRule, Rule} from '../rule.model';
-import {GameState, IGameState} from '../../game/game-state.model';
 
 export const rulesFeatureKey = 'rules';
 
 export interface RuleState extends EntityState<IRule> {
-  gameState: IGameState,
   loading: boolean,
   loaded: boolean
 }
@@ -21,12 +19,11 @@ export const adapter = createEntityAdapter<IRule>({
 });
 
 export const initialState: RuleState = adapter.getInitialState({
-  gameState: {...new GameState()},
   loading: false,
   loaded: false
 });
 
-export const reducers = createReducer(
+export const reducer = createReducer(
   initialState,
 
   on(RuleActions.loadRules,
@@ -59,31 +56,6 @@ export const reducers = createReducer(
       return adapter.removeOne(action.rule.id, state);
     }),
 
-  on(RuleActions.incrementQuestCounter,
-    (state, action) => {
-      const questIndex = state.gameState.quests.findIndex((quest) => quest.id === action.appAction.contextId);
-      let newGameState = state.gameState;
-      if (questIndex > -1) {
-        newGameState.quests[questIndex].amount += 1;
-      }
-      return {
-        ...state,
-        gameState: newGameState
-      };
-    }),
-
-  on(RuleActions.incrementEpicQuestCounter,
-    (state, action) => {
-      const epicQuestIndex = state.gameState.epicQuests.findIndex((epicQuest) => epicQuest.id === action.appAction.contextId);
-      let newGameState = state.gameState;
-      if (epicQuestIndex > -1) {
-        newGameState.epicQuests[epicQuestIndex].amount += 1;
-      }
-      return {
-        ...state,
-        gameState: newGameState
-      };
-    }),
 );
 
 export const {
@@ -91,7 +63,7 @@ export const {
 } = adapter.getSelectors();
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
-//export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [logger] : [];
+//export const metaReducer: MetaReducer<AppState>[] = !environment.production ? [logger] : [];
 
 export function logger(reducer: ActionReducer<any>): ActionReducer<any> {
   return (state, action) => {
