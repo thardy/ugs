@@ -21,6 +21,21 @@
   <div class="column">
     <ul>
       <li>
+        Form Answers:<br/>
+        <ace style="height: 200px;" [config]="config" [(value)]="formAnswersJsonString"></ace>
+        <br/>
+      </li>
+      <li>
+        Answer Created
+        <input placeholder="Question Id" #answerCreated>
+        <button (click)="onDispatchAction({name: 'answerCreated', contextId: answerCreated.value})">Dispatch</button>
+      </li>
+      <li>
+        Answer Updated
+        <input placeholder="Question Id" #answerUpdated>
+        <button (click)="onDispatchAction({name: 'answerUpdated', contextId: answerUpdated.value})">Dispatch</button>
+      </li>
+      <li>
         Give Item
         <input placeholder="Item Id" #giveItem> <input placeholder="Destination" #giveItemDestination>
         <button (click)="onDispatchAction({name: 'giveItem', contextId: giveItem.value, destination: giveItemDestination.value})">Dispatch</button>

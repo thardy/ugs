@@ -25,7 +25,6 @@ export class RuleEditComponent implements OnInit {
   form: FormGroup;
   loading$: Observable<boolean>;
   config: AceConfigInterface;
-  actionDependencyJson: any;
   actionDependencyJsonString: string;
   conditionsJsonString: string;
   outputActionsJsonString: string;

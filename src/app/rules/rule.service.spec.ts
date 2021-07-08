@@ -362,6 +362,17 @@ const state = {
   ]
 };
 
+const merchAnswers = {
+  "firstName": "Joe",
+  "lastName": "Smith",
+  "tshirt": {
+    "doYouWantATShirt": false,
+      "size": null,
+      "color": null
+  }
+
+};
+
 const merchLayout = {
   "pageGroups": [
     {

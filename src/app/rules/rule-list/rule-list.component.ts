@@ -8,6 +8,7 @@ import {RuleActions} from '../store/rule.actions-typed';
 import {filter, finalize, first, tap} from 'rxjs/operators';
 import {AppAction} from '../app-action.model';
 import {GameActions} from '../../game/store/game.actions-typed';
+import {AceConfigInterface} from 'ngx-ace-wrapper';
 
 @Component({
   selector: 'ugs-rule-list',
@@ -23,8 +24,17 @@ export class RuleListComponent implements OnInit {
   editing = false;
   adding = false;
   selectedRule: IRule;
+  config: AceConfigInterface;
+  formAnswerJsonString: string;
+  formState: any;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) {
+    this.config = {
+      mode: 'json',
+      theme: 'github',
+      readOnly: false
+    };
+  }
 
   ngOnInit(): void {
     this.rules$ = this.store
@@ -91,24 +101,31 @@ export class RuleListComponent implements OnInit {
   onDispatchAction(appActionOptions: any) {
     const appAction = new AppAction(appActionOptions);
 
-    switch(appAction.name) {
-      case 'giveItem':
-        this.store.dispatch(GameActions.giveItem({appAction: {...appAction}}));
-        break;
-      case 'enemyDefeated':
-        this.store.dispatch(GameActions.enemyDefeated({appAction: {...appAction}}));
-        break;
-      case 'completeQuest':
-        this.store.dispatch(GameActions.completeQuest({appAction: {...appAction}}));
-        break;
-      case 'allianceMade':
-        this.store.dispatch(GameActions.allianceMade({appAction: {...appAction}}));
-        break;
-      case 'testAction':
-        this.store.dispatch(GameActions.incrementQuestCounter({appAction: {...appAction}}));
-        break;
-
+    if (appActionOptions && appActionOptions.name) {
+      const appAction = new AppAction(appActionOptions);
+      // we have to translate the typed model to a raw javascript object (via spread operator) because no object
+      //  with a custom constructor can pass through ngRx (can't guarantee immutability with custom constructor)
+      this.store.dispatch({type: appAction.name, appAction: {...appAction}});
     }
+
+    // switch(appAction.name) {
+    //   case 'giveItem':
+    //     this.store.dispatch(GameActions.giveItem({appAction: {...appAction}}));
+    //     break;
+    //   case 'enemyDefeated':
+    //     this.store.dispatch(GameActions.enemyDefeated({appAction: {...appAction}}));
+    //     break;
+    //   case 'completeQuest':
+    //     this.store.dispatch(GameActions.completeQuest({appAction: {...appAction}}));
+    //     break;
+    //   case 'allianceMade':
+    //     this.store.dispatch(GameActions.allianceMade({appAction: {...appAction}}));
+    //     break;
+    //   case 'testAction':
+    //     this.store.dispatch(GameActions.incrementQuestCounter({appAction: {...appAction}}));
+    //     break;
+    //
+    // }
 
   }
 }

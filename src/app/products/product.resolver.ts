@@ -3,9 +3,9 @@ import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/rou
 import {Observable} from 'rxjs';
 import {filter, finalize, first, tap} from 'rxjs/operators';
 import {select, Store} from '@ngrx/store';
-import {AppState} from '../../store/reducers';
-import {ProductActions} from './product.actions-typed';
-import {isLoaded} from './product.selectors';
+import {AppState} from '../store/reducers';
+import {ProductActions} from './store/product.actions-typed';
+import {isLoaded} from './store/product.selectors';
 
 @Injectable()
 export class ProductResolver implements Resolve<any> {

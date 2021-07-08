@@ -7,7 +7,7 @@ import {EffectsModule} from '@ngrx/effects';
 
 import * as fromProducts from './store/product.reducer';
 import {ProductEffects} from './store/product.effects';
-import {ProductResolver} from './store/product.resolver';
+import {ProductResolver} from './product.resolver';
 
 import {ProductsRoutingModule} from './products-routing.module';
 import {ProductService} from './product.service';

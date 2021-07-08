@@ -6,6 +6,7 @@ export interface IAppAction {
   name: string;     // e.g. *selectChoice* 'save the slaves', *defeatEnemy* 10 rabbits, *giveItem* 15 weapons, *giveItem* particular item, *arriveAtLocation* Haven
   contextId: any;   // e.g. selectChoice *'save the slaves'*, defeatEnemy 10 *rabbits*, giveItem 15 *weapons*, giveItem *particular item*, arriveAtLocation *Haven*
   contextAmount: number;  // e.g. selectChoice 'save the slaves', defeatEnemy *10* rabbits, giveItem *15* weapons, giveItem *1* particular item , arriveAtLocation Haven
+  contextIds: any[];
   source: any;      // might want to type the source once we know more detail about how we will use it
   destination: any; // might want to type the destination once we know more detail about how we will use it
 }
@@ -22,6 +23,7 @@ export class AppAction {
   id: number;
   name: string;
   contextId: any;
+  contextIds: any[]
   contextAmount: number;
   source: any;
   destination: any;
@@ -30,6 +32,7 @@ export class AppAction {
     id?: number,
     name?: any,
     contextId?: any,
+    contextIds?: any[],
     contextAmount?: number,
     source?: any,
     destination?: any,
@@ -37,6 +40,7 @@ export class AppAction {
     this.id = options.id;
     this.name = options.name;
     this.contextId = options.contextId;
+    this.contextIds = options.contextIds;
     this.contextAmount = options.contextAmount;
     this.source = options.source;
     this.destination = options.destination;
